@@ -84,9 +84,9 @@ async function displayVehicleInfo (details) {
     const info = document.querySelector('#info');
     if( info.style.display == 'none' ) return;
 
-    info.querySelector('#speed-value').innerText = details.speed;
-    info.querySelector('#battery-value').innerText = details.battery_level;
-    info.querySelector('#cpu-value').innerText = details.cpu_usage;
+    info.querySelector('#speed-value').innerText = details.speed + ' km/h';
+    info.querySelector('#battery-value').innerText = details.battery_level + ' %';
+    info.querySelector('#cpu-value').innerText = details.cpu_usage + ' %';
     info.querySelector('#coords-value').innerText = `${details.lat}, ${details.lng}`;
     // battery_level: 52.9
     // cpu_usage: 49.9
@@ -170,7 +170,6 @@ const periodicUpdateAtInterval = () => {
 }
 
 const render = () => {
-    console.log('render');
     renderer.render(scene, camera);
     renderer2.render(scene2, camera);
 }
