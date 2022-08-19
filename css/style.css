@@ -1,0 +1,163 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.42857143;
+    padding: 0;
+    margin: 0;
+}
+
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.hotspot-wrapper {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* The circle */
+.hotspot-emitter {
+    position: relative;
+    margin: 60px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    /* background-color: #FFBF00; */
+}
+
+.hotspot-emitter:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+/* the 'wave', same shape and size as its parent */
+.hotspot-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #00E5FF;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/*
+Animate!
+NOTE: add browser prefixes where needed.
+*/
+.hotspot-wave {
+    animation: sonarWave 2s linear infinite;
+}
+
+@keyframes sonarWave {
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+.search-container {
+    top: 5px;
+    right: 15px;
+    position: absolute;
+    width: calc(100% - 60px);
+    height: 36px;
+    display: block;
+    margin: 0 auto;
+}
+
+input#search-bar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    border: 1px solid #D0CFCE;
+    outline: none;
+}
+
+input#search-bar:focus {
+    border: 1px solid #008ABF;
+    transition: 0.35s ease;
+    color: #008ABF;
+}
+
+input#search-bar:focus::-webkit-input-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+}
+
+input#search-bar:focus::-moz-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+}
+
+input#search-bar:focus:-ms-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+}
+
+.search-icon {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+}
+
+.w3-sidebar {
+    background-color: #fafafa !important;
+    width: 300px !important;
+}
+
+.w3-sidebar .car-preview {
+    background-color: #C0EFC9;
+    width: 100%;
+}
+
+.w3-sidebar .info-card {
+    position: relative;
+    float: left;
+    margin-left: 10px;
+    background-color: #4fc3f74f;
+    height: 115px;
+    border-radius: 10px;
+    margin-top: 10px;
+    max-width: calc(100% - 20px);
+    min-width: calc(50% - 15px);
+    box-shadow: 0 3px 8px rgb(0 0 0 / 10%), 0 0 2px rgb(0 0 0 / 20%);
+}
+
+.w3-sidebar #header {
+    text-align: center;
+}
+
+.w3-sidebar .row {
+    margin-top: 20px;
+}
+
+.w3-sidebar .speed-header {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 20px;
+}
