@@ -15,7 +15,7 @@ scene.fog = new THREE.Fog( 0, 0.1, 0 );
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
 camera.position.z = 10;
 
-var renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+var renderer = new THREE.WebGLRenderer({ antialias: true, canvas, alpha: true });
 renderer.pixelRatio = window.devicePixelRatio;
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x000000, 0);
@@ -145,7 +145,9 @@ const updateVehiclesTelemetry = async () => {
         const direction = getDirections(oldPos, hotspot.position);
         hotspot.direction.position.copy(hotspot.position);
         hotspot.direction.setDirection(direction);
-        hotspot.direction.setLength(vehicleTelemetry.speed * 0.05);
+        
+        const length = vehicleTelemetry.speed * 0.05, headLength = length * 0.2, headWidth = headLength * 0.5;
+        hotspot.direction.setLength(length, headLength, headWidth);
 
         if (targetVehicle && targetVehicle.id == vehicle.telemetry.vehicle_id) {
             displayVehicleInfo(vehicleTelemetry);
